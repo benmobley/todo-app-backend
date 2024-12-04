@@ -13,8 +13,16 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "/todos" => "todos#index"
+  post "/todos" => "todos#create"
+  get "/todos/:id" => "todos#show"
+  patch "/todos/:id" => "todos#update"
+  delete "/todos/:id" => "todos#destroy"
 
   get "/categories" => "categories#index"
+  post "/categories" => "categories#create"
+  get "/categories/:id" => "categories#show"
+  patch "/categories/:id" => "categories#update"
+  delete "/categories/:id" => "categories#destroy"
 
   post "/users" => "users#create"
 
