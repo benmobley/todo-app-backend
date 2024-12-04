@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @categories = Category.all
     render :index
@@ -12,6 +14,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.create(
       name: params[:name],
+      user_id: current_user.id,
     )
     render :show
   end

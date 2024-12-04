@@ -1,4 +1,6 @@
 class TodosController < ApplicationController
+  before_action :authenticate_user
+
   def index
     @todos = Todo.all
     render :index
@@ -6,7 +8,7 @@ class TodosController < ApplicationController
 
   def create
     @todo = Todo.create(
-      user_id: params[:user_id],
+      user_id: current_user.id,
       category_id: params[:category_id],
       title: params[:title],
       description: params[:description],
