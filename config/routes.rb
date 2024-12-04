@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "/todos" => "todos#index"
+
+  get "/categories" => "categories#index"
 end
