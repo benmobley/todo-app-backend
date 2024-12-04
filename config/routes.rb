@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   post "/categories" => "categories#create"
   get "/categories/:id" => "categories#show"
   patch "/categories/:id" => "categories#update"
+
+  post "/users" => "users#create"
+
+  post "/sessions" => "sessions#create"
+  delete "/sessions" => "sessions#destroy"
 end
