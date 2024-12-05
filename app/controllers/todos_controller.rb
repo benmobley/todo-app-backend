@@ -15,6 +15,7 @@ class TodosController < ApplicationController
       deadline: params[:deadline],
       completed: params[:completed],
     )
+    pp @todo
     render :show
   end
 
