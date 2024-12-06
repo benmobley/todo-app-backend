@@ -36,12 +36,14 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.find_by(id: params[:id])
-    if current_user.id == @category.user_id
-      @category.destroy
-      render json: { message: "sucessfully destroyed" }
+    @category = Category.find(params[:id])
+    if @category.todos.any?
+      render json: { error: "Cannot delete category with todos" }, status: :unprocessable_entity
     else
-      render json: { message: "Category does not exist for current user" }
+      @category.destroy
+      render json: { message: "Category deleted successfully" }
     end
+  rescue => e
+    render json: { error: e.message }, status: :internal_server_error
   end
 end
